@@ -25,3 +25,18 @@ print(distance.vshort[4])
 print(speed.medium[2])
 print(alfaSum)
 print(rules.large)
+
+
+function calculateM(x, triangleVariable)
+  m = 0
+  if x < triangleVariable[1] then
+    m = 0
+  elseif (triangleVariable[1]  <= x and x <= triangleVariable[2]) then
+     m = (x-triangleVariable[1])/(triangleVariable[2] - triangleVariable[1])
+  elseif (triangleVariable[2]  < x and x <= triangleVariable[3]) then
+    m = (triangleVariable[3] - x)/(triangleVariable[3] - triangleVariable[2]);
+  else
+    m = 0
+  end
+  return m
+end
