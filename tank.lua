@@ -70,3 +70,17 @@ function fuzzification(givenDistance, distanceObj)
 end
 
 --tprint(fuzzification(200, distance))
+
+function calculateAreaAlfaCut (alfaI, triangleVariable)
+  sum = 0
+  if(alfaI > 0) then
+    for i=triangleVariable[1], triangleVariable[3], 100 do
+      min = math.min(alfaI, calculateM(i, triangleVariable))
+      alfaSum = alfaSum + min
+      sum = sum + i * min
+    end   
+  end
+  return sum
+end
+
+-- print(calculateAreaAlfaCut(0.5, speed.low))
