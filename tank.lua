@@ -27,6 +27,24 @@ print(alfaSum)
 print(rules.large)
 
 
+-- from https://gist.github.com/hashmal/874792
+-- Print contents of `tbl`, with indentation.
+-- `indent` sets the initial level of indentation.
+function tprint (tbl, indent)
+  if not indent then indent = 0 end
+  for k, v in pairs(tbl) do
+    formatting = string.rep("  ", indent) .. k .. ": "
+    if type(v) == "table" then
+      print(formatting)
+      tprint(v, indent+1)
+    else
+      print(formatting .. v)
+    end
+  end
+end
+
+
+
 function calculateM(x, triangleVariable)
   m = 0
   if x < triangleVariable[1] then
@@ -40,3 +58,15 @@ function calculateM(x, triangleVariable)
   end
   return m
 end
+
+--print(calculateM(200, distance.medium))
+
+function fuzzification(givenDistance, distanceObj)
+  ms = {}
+  for key, value in pairs(distanceObj) do
+    ms[key] = calculateM(givenDistance, distance[key])
+  end
+  return ms
+end
+
+--tprint(fuzzification(200, distance))
