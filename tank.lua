@@ -21,10 +21,10 @@ speed = {
 
 alfaSum = 0;
 
-print(distance.vshort[4])
-print(speed.medium[2])
-print(alfaSum)
-print(rules.large)
+-- print(distance.vshort[4])
+-- print(speed.medium[2])
+-- print(alfaSum)
+-- print(rules.large)
 
 
 -- from https://gist.github.com/hashmal/874792
@@ -43,6 +43,18 @@ function tprint (tbl, indent)
   end
 end
 
+-- reduce function
+table.reduce = function (list, fn) 
+    local acc
+    for k, v in ipairs(list) do
+        if 1 == k then
+            acc = v
+        else
+            acc = fn(acc, v)
+        end 
+    end 
+    return acc 
+end
 
 
 function calculateM(x, triangleVariable)
@@ -84,3 +96,35 @@ function calculateAreaAlfaCut (alfaI, triangleVariable)
 end
 
 -- print(calculateAreaAlfaCut(0.5, speed.low))
+
+function calculateZi(givenDistance, distanceObj)
+  res = {}
+  for key, value in pairs(fuzzification(givenDistance, distanceObj)) do
+--    print(value, speed[rules[key]])
+    x = calculateAreaAlfaCut(value, speed[rules[key]])
+    table.insert(res , x)
+  end
+  return res
+end
+
+--tprint(calculateZi(200, distance))
+
+function calculateZ(givenDistance, distanceObj)
+    alfaSum = 0
+    return table.reduce(
+    calculateZi(givenDistance, distanceObj) ,
+    function (a, b)
+        return a + b
+    end
+  )/alfaSum
+end
+
+-- print("0", calculateZ(0, distance)) --nan
+-- print("100", calculateZ(100, distance)) --0
+-- print("150", calculateZ(150, distance)) --0
+-- print("200", calculateZ(200, distance)) --125
+-- print("300", calculateZ(300, distance)) --500
+-- print("350", calculateZ(350, distance)) --500
+-- print("400", calculateZ(400, distance)) --500
+-- print("450", calculateZ(450, distance)) --1000
+-- print("500", calculateZ(500, distance)) --1000
