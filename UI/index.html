@@ -1,0 +1,24 @@
+<!doctype html>
+<html ng-app="todoApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Tank</title>
+    <!-- <base href="/"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="file:///C:/Mimi/razmiti/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+    <script src="file:///C:/Mimi/razmiti/app.js"></script>
+  </head>
+  <body>
+    <h2>Tank control</h2>
+    <div ng-controller="ManualController as manual">
+        <button ng-click="manual.manualControl()">Manual control</button>
+        <button ng-click="manual.fuzzyControl()">Fuzzy control</button>
+        {{manual.isManualControl}}
+    </div>
+
+    <div class="remote" ng-class="manual.isManualControl === true ? 'blah' : 'hidden' ">
+      
+    </div>
+  </body>
+</html>
