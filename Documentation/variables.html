@@ -1,0 +1,65 @@
+<head>
+  <!-- Plotly.js -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<body>
+  
+  <div id="distance"><!-- Plotly chart will be drawn inside this DIV --></div>
+  <div id="speed"><!-- Plotly chart will be drawn inside this DIV --></div>
+  <script>
+    
+var distance1 = {
+  x: [0, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500], 
+  y: [1,1,0], 
+  type: 'scatter'
+};
+
+var distance2 = {
+  x: [50, 150, 250, 300, 350, 400, 450, 500], 
+  y: [0,1,0], 
+  type: 'scatter'
+};
+
+var distance3 = {
+  x: [ 150, 300, 450], 
+  y: [0,1,0], 
+  type: 'scatter'
+};
+
+var distance4 = {
+  x: [ 400, 500, 550], 
+  y: [0,1,1], 
+  type: 'scatter'
+};
+var data = [distance1, distance2, distance3, distance4];
+Plotly.newPlot('distance', data);
+
+
+var speed1 = {
+  x: [-1000,0], 
+  y: [1,0], 
+  type: 'scatter'
+};
+
+var speed2 = {
+  x: [ -400, 0, 400], 
+  y: [0,1,0], 
+  type: 'scatter'
+};
+
+var speed3 = {
+  x: [ 300, 500, 700], 
+  y: [0,1,0], 
+  type: 'scatter'
+};
+
+var speed4 = {
+  x: [ 500, 1000], 
+  y: [0,1], 
+  type: 'scatter'
+};
+var data = [speed1, speed2, speed3, speed4];
+Plotly.newPlot('speed', data);
+  </script>
+</body>

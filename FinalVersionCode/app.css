@@ -1,0 +1,20 @@
+.joystick {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: red;
+    position: relative;
+}
+body, html {
+    margin: 0;
+    padding: 0;
+}
+.pointer {
+    position: absolute;
+    pointer-events: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: radial-gradient(rgba(0, 255, 0, 1) 0%, rgba(0, 255, 0, 0) 50%);
+    margin: -30px;
+}

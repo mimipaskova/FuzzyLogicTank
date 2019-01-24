@@ -1,0 +1,20 @@
+<!doctype html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="app.css"/>
+</head>
+<html>
+    <body ng-app="remote">
+        <div ng-controller="remoteCtl" ng-click="setPower(0,0)">
+            <div class="joystick" ng-mouseleave="setPower(0,0)" ng-mousemove="adjust($event)" ng-click="$event.preventDefault()">
+                <div class="pointer" ng-style="{left: (1 - power.turn) * 50 + '%', top: (1 - power.speed) * 50 + '%'}"></div>
+            </div>
+            <div>
+                <br><button ng-click="auto($event)">Auto</button>
+            </div>
+        </div>
+    </body>
+</html>
